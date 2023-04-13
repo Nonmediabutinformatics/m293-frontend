@@ -134,66 +134,10 @@ function updateTask(task) {
         });
 }
 
-
-
-
-
-/*
-// Tests
-getTask(1).then(result => {
-    if (result.success) {
-        document.write(JSON.stringify(result.task));
-    } else {
-        document.write(result.message);
-    }
-});
-
-// Retrieve all tasks
-getAllTasks().then(result => {
-    if (result.success) {
-        // Display the first task
-        getTask(result.tasks[0].id).then(result => {
-            if (result.success) {
-                document.write("test" + JSON.stringify(result.task));
-            } else {
-                document.write(result.message);
-            }
-        });
-    } else {
-        document.write(result.message);
-    }
-});
-
-// Add new task
-const newTask = {
-    completed: false,
-    title: 'Take out trash'
-  };
-  
-  addTask(newTask).then(result => {
-    if (result.success) {
-      document.write(JSON.stringify(result.task));
-    } else {
-      document.write(result.message);
-    }
-  });
-
-// Update an existing task with ID 1
-const updatedTask = {
-    id: 1,
-    completed: true,
-    title: "Walk the dog"
+export {
+    deleteTask,
+    getTask,
+    getAllTasks,
+    addTask,
+    updateTask
 };
-
-updateTask(updatedTask)
-    .then(result => {
-        if (result.success) {
-            console.log("Task successfully updated:", result.task);
-        } else {
-            console.error("Error updating task:", result.message);
-        }
-    })
-    .catch(error => {
-        console.error("Error updating task:", error);
-    });
-*/
