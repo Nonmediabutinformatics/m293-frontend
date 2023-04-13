@@ -36,9 +36,53 @@ addTaskForm.addEventListener('submit', event => {
 function createTaskBox(task) {
     const taskBox = document.createElement('div');
     taskBox.classList.add('task-box');
-    taskBox.innerText = task.title;
+    taskBox.dataset.taskId = task.id;
 
-    // Buttons erstellen
+    // Create the task name element
+    const taskName = document.createElement('span');
+    taskName.classList.add('task-name');
+    taskName.innerText = task.title;
+    taskBox.appendChild(taskName);
+
+    // Create the input element for editing the task name
+    const editInput = document.createElement('input');
+    editInput.classList.add('edit-input');
+    editInput.type = 'text';
+    editInput.value = task.title;
+    editInput.style.display = 'none'; // Initially hidden
+    taskBox.appendChild(editInput);
+
+    // Double-click listener to enable editing
+    taskName.addEventListener('dblclick', () => {
+        taskName.style.display = 'none';
+        editInput.style.display = 'inline';
+        editInput.focus();
+    });
+
+    // Keypress listener to update task name on Enter key press
+    editInput.addEventListener('keypress', (event) => {
+        if (event.key === 'Enter') {
+            const newTitle = editInput.value.trim();
+            if (newTitle !== '') {
+                task.title = newTitle;
+                updateTask(task)
+                    .then(response => {
+                        if (response.success) {
+                            taskName.innerText = newTitle;
+                            taskName.style.display = 'inline';
+                            editInput.style.display = 'none';
+                        } else {
+                            console.error(response.message);
+                        }
+                    })
+                    .catch(error => {
+                        console.error(error);
+                    });
+            }
+        }
+    });
+
+    // Create the delete button
     const deleteButton = document.createElement('button');
     deleteButton.innerText = 'Delete';
     deleteButton.addEventListener('click', () => {
@@ -54,7 +98,9 @@ function createTaskBox(task) {
                 console.error(error);
             });
     });
+    taskBox.appendChild(deleteButton);
 
+    // Create the toggle button
     const toggleButton = document.createElement('button');
     toggleButton.innerText = task.completed ? 'Undo' : 'Done';
     toggleButton.addEventListener('click', () => {
@@ -76,13 +122,12 @@ function createTaskBox(task) {
                 console.error(error);
             });
     });
-
-    // Buttons der Box hinzufügen
-    taskBox.appendChild(deleteButton);
     taskBox.appendChild(toggleButton);
 
     return taskBox;
 }
+
+
 
 // Funktion zum Füllen der To-do- und Done-Spalten
 function fillTaskColumns(tasks) {
@@ -111,4 +156,3 @@ getAllTasks()
     .catch(error => {
         console.error(error);
     });
-
