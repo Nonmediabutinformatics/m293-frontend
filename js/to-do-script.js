@@ -160,7 +160,7 @@ function createTaskBox(task) {
 
 
 
-// Funktion zum Füllen der To-do- und Done-Spalten
+// Sort into To do and Done colum
 function fillTaskColumns(tasks) {
     const todoColumn = document.getElementById('todo-tasks');
     const doneColumn = document.getElementById('done-tasks');
@@ -176,8 +176,7 @@ function fillTaskColumns(tasks) {
     });
 }
 
-// getAllTasks aufrufen und die Spalten füllen
-
+// Get all tasks or some tasks specific
 if (ids === null) {
     getAllTasks()
         .then(response => {
@@ -216,6 +215,7 @@ if (ids === null) {
 
 
 
+// Make some long words shorter with -
 function hyphenateLongWords(text) {
     const words = text.split(' ');
     const hyphenatedWords = words.map(word => {
