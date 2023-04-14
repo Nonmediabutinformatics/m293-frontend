@@ -78,6 +78,8 @@
   
   .edit-input {
     margin-right: 10px;
+    font-size: 18px;
+    font-weight: bold;
   }
   
   .delete-btn {
@@ -109,3 +111,48 @@
     background-color: #666;
   }
   
+
+
+
+
+
+
+  h1 {
+    margin-left: 1.25%;
+    font-size: 36px;
+    margin-right: 20px;
+  }
+  
+  #add-task-form {
+    display: flex;
+    align-items: center;
+  }
+  
+  #add-task-form label {
+    margin-left: 1.25%;
+    font-size: 18px;
+    margin-right: 10px;
+  }
+  
+  #add-task-form input[type="text"] {
+    font-size: 16px;
+    padding: 3px;
+    border: 1px solid #ccc;
+    border-radius: 0px;
+    width: 200px;
+    margin-right: 10px;
+    box-sizing: border-box;
+  }
+  
+  #add-task-form button[type="submit"] {
+    background-color: #333;
+    color: #fff;
+    border: none;
+    padding: 5px 10px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  #add-task-form button[type="submit"]:hover {
+    background-color: #666;
+  }

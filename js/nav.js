@@ -12,12 +12,12 @@ async function updateNavLinks() {
         <li><a href="to-do.html">To-doList</a></li>
         <li><a href="#" id="logout">Logout</a></li>
       `;
-      const logout = document.getElementById("logout");
+            const logout = document.getElementById("logout");
 
-logout.addEventListener('click', (event) => {
-    localStorage.removeItem('jwtToken');
-    window.location.reload();
-})
+            logout.addEventListener('click', (event) => {
+                localStorage.removeItem('jwtToken');
+                window.location.reload();
+            })
         } else {
             navLinks.innerHTML = `
         <li><a href="index.html">Home</a></li>
@@ -28,9 +28,5 @@ logout.addEventListener('click', (event) => {
         console.error(error);
     }
 }
-
-/*function logout() {
-    localStorage.removeItem('jwtToken');
-  }*/
 
 updateNavLinks();

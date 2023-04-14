@@ -13,13 +13,19 @@ loginForm.addEventListener('submit', (event) => {
     .then(data => {
         if (data.success) {
             message.textContent = 'Login successful!';
+            message.classList.add('success');
+            message.classList.remove('error');
             localStorage.setItem('jwtToken', data.token);
             window.location.href = 'index.html';
         } else {
             message.textContent = 'Email address or password incorrect.';
+            message.classList.add('error');
+            message.classList.remove('success');
         }
     })
     .catch(error => {
         message.textContent = `Login failed: ${error.message}`;
+        message.classList.add('error');
+        message.classList.remove('success');
     });
 });

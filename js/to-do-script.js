@@ -24,7 +24,6 @@ if (ids.length === 0) {
             completed: false,
         };
 
-
         addTask(newTask)
             .then(response => {
                 if (response.success) {
@@ -42,7 +41,7 @@ if (ids.length === 0) {
     });
 
 
-// Funktion zum Erstellen einer Aufgaben-Box
+// Create task box
 function createTaskBox(task) {
     const taskBox = document.createElement('div');
     taskBox.classList.add('task-box');
@@ -59,7 +58,7 @@ function createTaskBox(task) {
     editInput.classList.add('edit-input');
     editInput.type = 'text';
     editInput.value = task.title;
-    editInput.style.display = 'none'; // Initially hidden
+    editInput.style.display = 'none';
     taskBox.appendChild(editInput);
 
     // Double-click listener to enable editing
@@ -89,6 +88,26 @@ function createTaskBox(task) {
                         console.error(error);
                     });
             }
+        }
+    });
+
+    editInput.addEventListener('blur', () => {
+        const newTitle = editInput.value.trim();
+        if (newTitle !== '') {
+            task.title = newTitle;
+            updateTask(task)
+                .then(response => {
+                    if (response.success) {
+                        taskName.innerText = hyphenateLongWords(newTitle);
+                        taskName.style.display = 'inline';
+                        editInput.style.display = 'none';
+                    } else {
+                        console.error(response.message);
+                    }
+                })
+                .catch(error => {
+                    console.error(error);
+                });
         }
     });
 
