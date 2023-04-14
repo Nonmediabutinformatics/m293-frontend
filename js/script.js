@@ -31,7 +31,7 @@ function authJwtSignPost(email, password) {
             }
         })
         .then(data => {
-            return data;
+            return { success: true, token: data.token };
         })
         .catch(error => {
             console.error('Error:', error);
@@ -95,7 +95,7 @@ function getTask(taskId) {
         })
         .catch(error => {
             console.error('Error:', error);
-            return { success: false, message: 'An error occurred while retrieving the task.' };
+            return { success: false, message: 'An error occurred while retrieving the task.', id: taskId };
         });
 }
 
@@ -185,45 +185,45 @@ function updateTask(task) {
             }
         })
         .then(data => {
-            return {
-                success: true,
-                task: data
-            };
+            return { success: true, task: data };
         })
         .catch(error => {
-            return {
-                success: false,
-                message: error.message
-            };
+            return { success: false, message: error.message };
         });
 }
 
 // Verify the token
 function verifyToken() {
     return fetch(`${server}/auth/jwt/verify`, {
-      method: 'GET',
-      headers: {
-        'Content-Type': 'application/json',
-        'Authorization': 'Bearer ' + token
-      }
+        method: 'GET',
+        headers: {
+            'Content-Type': 'application/json',
+            'Authorization': 'Bearer ' + token
+        }
     })
-    .then(response => {
-      if (response.ok) {
-        return response.json();
-      } else if (response.status === 401) {
-        throw new Error('Unauthorized');
-      } else {
-        throw new Error('Error verifying token');
-      }
-    })
-    .then(data => {
-      return { success: true, email: data.email };
-    })
-    .catch(error => {
-      return { success: false, message: error.message };
-    });
-  }
-  
+        .then(response => {
+            if (response.ok) {
+                return response.json();
+            } else if (response.status === 401) {
+                throw new Error('Unauthorized');
+            } else {
+                throw new Error('Error verifying token');
+            }
+        })
+        .then(data => {
+            return { success: true, email: data.email };
+        })
+        .catch(error => {
+            return { success: false, message: error.message };
+        });
+}
+
+// Logout
+function logout() {
+    localStorage.removeItem('jwtToken');
+}
+
+
 
 export {
     authJwtSignPost,
@@ -232,5 +232,6 @@ export {
     getAllTasks,
     addTask,
     updateTask,
-    verifyToken
+    verifyToken,
+    logout
 };

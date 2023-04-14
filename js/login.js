@@ -10,12 +10,16 @@ loginForm.addEventListener('submit', (event) => {
     const password = loginForm.password.value;
 
     authJwtSignPost(email, password)
-        .then(data => {
+    .then(data => {
+        if (data.success) {
             message.textContent = 'Login successful!';
             localStorage.setItem('jwtToken', data.token);
             window.location.href = 'index.html';
-        })
-        .catch(error => {
-            message.textContent = `Login failed: ${error.message}`;
-        });
+        } else {
+            message.textContent = 'Email address or password incorrect.';
+        }
+    })
+    .catch(error => {
+        message.textContent = `Login failed: ${error.message}`;
+    });
 });
