@@ -13,7 +13,7 @@ function checkServerStatus() {
     fetch('http://localhost:3000')
       .then(response => {
         if (response.status === 200) {
-            showAlert('Server is running!');
+            //showAlert('Server is running!');
         } else {
             showAlert('The server is not running. The website will not work as expected.');
         }
