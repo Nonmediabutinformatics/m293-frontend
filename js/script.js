@@ -8,6 +8,7 @@ try {
     token = null;
 }
 
+// Check the Serverstatus
 function checkServerStatus() {
     fetch('http://localhost:3000')
       .then(response => {
@@ -262,6 +263,8 @@ function showAlert(text) {
     document.body.appendChild(alertContainer);
 }
 
+// Check the Serverstatus
+checkServerStatus()
 
 // Export modules
 export {
