@@ -1,3 +1,4 @@
+<!--https://github.com/Nonmediabutinformatics/m294-lb-frontend-->
 # ToDoHub
 
 ToDoHub ist eine webbasierte Anwendung, die entwickelt wurde, um Benutzern bei der Organisation ihrer Aufgaben und der Steigerung ihrer Produktivität zu helfen. Die Anwendung bietet eine benutzerfreundliche Oberfläche mit fortschrittlichen Funktionen, die Benutzern helfen, auf Kurs zu bleiben und ihre Ziele zu erreichen. Ich habe dieses Projekt im Rahmen der praktischen Prüfung 294 erstellt.

@@ -8,6 +8,21 @@ try {
     token = null;
 }
 
+function checkServerStatus() {
+    fetch('http://localhost:3000')
+      .then(response => {
+        if (response.status === 200) {
+            showAlert('Server is running!');
+        } else {
+            showAlert('The server is not running. The website will not work as expected.');
+        }
+      })
+      .catch(error => {
+        console.error(error)
+        showAlert('The server is not running. The website will not work as expected.')
+      });
+  }  
+
 // Generate JWT token
 function authJwtSignPost(email, password) {
     const url = `${server}/auth/jwt/sign`;
@@ -31,11 +46,11 @@ function authJwtSignPost(email, password) {
             }
         })
         .then(data => {
-            return { success: true, token: data.token };
+            return { success: true, token: data.token, message: 'Login Successful.' };
         })
         .catch(error => {
             console.error('Error:', error);
-            return { success: false, message: error.message };
+            return { success: false, message: 'An error occurred while logging in.' };
         });
 }
 
@@ -91,7 +106,7 @@ function getTask(taskId) {
             return response.json();
         })
         .then(data => {
-            return { success: true, task: data };
+            return { success: true, task: data, message: 'Task received successfully.' };
         })
         .catch(error => {
             console.error('Error:', error);
@@ -124,7 +139,7 @@ function getAllTasks() {
             return response.json();
         })
         .then(data => {
-            return { success: true, tasks: data };
+            return { success: true, tasks: data, message: 'The tasks received successfully.' };
         })
         .catch(error => {
             console.error('Error:', error);
@@ -152,10 +167,10 @@ function addTask(task) {
             }
         })
         .then(data => {
-            return { success: true, task: data };
+            return { success: true, task: data, message: 'Task successfully added.' };
         })
         .catch(error => {
-            return { success: false, message: error.message };
+            return { success: false, message: 'An error occurred while adding the task.' };
         });
 }
 
@@ -185,10 +200,10 @@ function updateTask(task) {
             }
         })
         .then(data => {
-            return { success: true, task: data };
+            return { success: true, task: data, message: 'Task updated successfully.' };
         })
         .catch(error => {
-            return { success: false, message: error.message };
+            return { success: false, message: 'An error occurred while updating the task.' };
         });
 }
 
@@ -211,16 +226,40 @@ function verifyToken() {
             }
         })
         .then(data => {
-            return { success: true, email: data.email };
+            return { success: true, email: data.email, message: 'Veryfication successful.' };
         })
         .catch(error => {
-            return { success: false, message: error.message };
+            return { success: false, message: 'An error occurred while verification.' };
         });
 }
 
 // Logout
 function logout() {
     localStorage.removeItem('jwtToken');
+}
+
+// Better alert
+function showAlert(text) {
+    var alertContainer = document.createElement('div');
+    alertContainer.className = 'alert-container';
+    var alertContent = document.createElement('div');
+    alertContent.className = 'alert-content';
+    var alertText = document.createElement('div');
+    alertText.className = 'alert-text';
+    alertText.innerHTML = text;
+    alertContent.appendChild(alertText);
+
+    var okButton = document.createElement('button');
+    okButton.className = 'ok-button';
+    okButton.innerHTML = 'OK';
+    okButton.addEventListener('click', function () {
+        alertContainer.parentNode.removeChild(alertContainer);
+    });
+
+    alertContent.appendChild(okButton);
+    alertContainer.appendChild(alertContent);
+
+    document.body.appendChild(alertContainer);
 }
 
 
@@ -233,5 +272,6 @@ export {
     addTask,
     updateTask,
     verifyToken,
-    logout
+    logout,
+    showAlert
 };

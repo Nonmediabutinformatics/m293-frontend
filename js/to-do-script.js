@@ -1,4 +1,4 @@
-import { getAllTasks, getTask, updateTask, deleteTask, addTask } from './script.js';
+import { getAllTasks, getTask, updateTask, deleteTask, addTask, showAlert } from './script.js';
 const todoColumn = document.getElementById('todo-tasks');
 const doneColumn = document.getElementById('done-tasks');
 
@@ -13,32 +13,36 @@ if (ids.length === 0) {
 }
 
 // Add a new task
-    const addTaskForm = document.getElementById('add-task-form');
-    addTaskForm.addEventListener('submit', event => {
-        event.preventDefault();
+const addTaskForm = document.getElementById('add-task-form');
+addTaskForm.addEventListener('submit', event => {
+    event.preventDefault();
 
-        const titleInput = document.getElementById('title');
+    const titleInput = document.getElementById('title');
 
-        const newTask = {
-            title: titleInput.value,
-            completed: false,
-        };
+    const newTask = {
+        title: titleInput.value,
+        completed: false,
+    };
 
-        addTask(newTask)
-            .then(response => {
-                if (response.success) {
-                    const taskBox = createTaskBox(response.task);
-                    todoColumn.appendChild(taskBox);
-                    // Formular zurücksetzen
-                    titleInput.value = '';
-                } else {
-                    console.error(response.message);
-                }
-            })
-            .catch(error => {
-                console.error(error);
-            });
-    });
+    addTask(newTask)
+        .then(response => {
+            if (response.success) {
+                const taskBox = createTaskBox(response.task);
+                todoColumn.appendChild(taskBox);
+                // Formular zurücksetzen
+                titleInput.value = '';
+                showAlert(response.message);
+
+            } else {
+                console.error(response.message);
+                showAlert(response.message);
+            }
+        })
+        .catch(error => {
+            console.error(error);
+            showAlert(response.message);
+        });
+});
 
 
 // Create task box
@@ -50,7 +54,7 @@ function createTaskBox(task) {
     // Create the task name element
     const taskName = document.createElement('span');
     taskName.classList.add('task-name');
-    taskName.innerText = hyphenateLongWords(task.title);
+    taskName.innerText = hyphenateLongWords(task.title).trim();
     taskBox.appendChild(taskName);
 
     // Create the input element for editing the task name
@@ -101,15 +105,19 @@ function createTaskBox(task) {
                         taskName.innerText = hyphenateLongWords(newTitle);
                         taskName.style.display = 'inline';
                         editInput.style.display = 'none';
+                        showAlert(response.message);
                     } else {
                         console.error(response.message);
+                        showAlert(response.message);
                     }
                 })
                 .catch(error => {
                     console.error(error);
+                    showAlert(response.message);
                 });
         }
     });
+
 
     // Create the delete button
     const deleteButton = document.createElement('button');
@@ -120,12 +128,15 @@ function createTaskBox(task) {
             .then(response => {
                 if (response.success) {
                     taskBox.remove();
+                    showAlert(response.message);
                 } else {
                     console.error(response.message);
+                    showAlert(response.message);
                 }
             })
             .catch(error => {
                 console.error(error);
+                showAlert("An error occurred while updating the task.");
             });
     });
     taskBox.appendChild(deleteButton);
@@ -141,16 +152,20 @@ function createTaskBox(task) {
                 if (response.success) {
                     if (task.completed) {
                         doneColumn.appendChild(taskBox);
+                        showAlert(response.message);
                     } else {
                         todoColumn.appendChild(taskBox);
+                        showAlert(response.message);
                     }
                     toggleButton.innerText = task.completed ? 'Undo' : 'Done';
                 } else {
                     console.error(response.message);
+                    showAlert(response.message);
                 }
             })
             .catch(error => {
                 console.error(error);
+                showAlert("An error occurred while updating the task.");
             });
     });
     taskBox.appendChild(toggleButton);
@@ -205,7 +220,7 @@ if (ids === null) {
                 fillTaskColumns(tasks);
             }
             if (notFoundIds.length > 0) {
-                alert(`Id ${notFoundIds.join(', ')} not found`);
+                showAlert(`Id ${notFoundIds.join(', ')} not found`);
             }
         })
         .catch(error => {
