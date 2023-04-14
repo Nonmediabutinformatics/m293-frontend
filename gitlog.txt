@@ -1,0 +1,77 @@
+commit 868aec7ef4000b9264ac635146da373b9c09c112 (HEAD -> main, origin/main)
+Author: JanSchaefli <jan.schaefli@edu.tbz.ch>
+Date:   Fri Apr 14 16:47:48 2023 +0200
+
+    testfälle gemacht
+
+commit 32997ad699d06e50f8355d13ad7b757e98e82c1c
+Author: JanSchaefli <jan.schaefli@edu.tbz.ch>
+Date:   Fri Apr 14 16:21:08 2023 +0200
+
+    Serverstatus check added
+
+commit 1466b8692c99e10e1284939b54ed0fc7e927c9cc
+Author: JanSchaefli <jan.schaefli@edu.tbz.ch>
+Date:   Fri Apr 14 16:19:39 2023 +0200
+
+    Added some alerts for updates
+
+commit 45bfd95770475fef62f4c6c79d4878e7238b4343
+Author: JanSchaefli <jan.schaefli@edu.tbz.ch>
+Date:   Fri Apr 14 14:34:54 2023 +0200
+
+    Added a forgotten line text in the readme
+
+commit a226fad89aaf0e6f6240e0375e0b454d1fc59891
+Author: JanSchaefli <jan.schaefli@edu.tbz.ch>
+Date:   Fri Apr 14 14:32:47 2023 +0200
+
+    Added a readme
+
+commit 4e72f0ff7fb645733f1497caa4a66b83720f5b18
+Author: JanSchaefli <jan.schaefli@edu.tbz.ch>
+Date:   Fri Apr 14 13:44:48 2023 +0200
+
+    made the code look a little bit better
+
+commit 2c9caef121bf2117663d58aad9db8e81aa7d3fd4
+Author: JanSchaefli <jan.schaefli@edu.tbz.ch>
+Date:   Fri Apr 14 13:28:14 2023 +0200
+
+    Changed designs and added text to index
+
+commit b4c37c53fe052c56e0ff76eb4ad6a5b8b1aba4d8
+Author: JanSchaefli <jan.schaefli@edu.tbz.ch>
+Date:   Fri Apr 14 10:47:02 2023 +0200
+
+    Einzelansicht der Produkte funktioniert
+
+commit 6dda2bbddba136f2279663abedb219631c12d988
+Author: JanSchaefli <jan.schaefli@edu.tbz.ch>
+Date:   Thu Apr 13 16:40:02 2023 +0200
+
+    JWT funktioniert (Login auch)
+
+commit 28ab805b54f90b85ddccf37476ca7bf9c7412b5a
+Author: JanSchaefli <jan.schaefli@edu.tbz.ch>
+Date:   Thu Apr 13 14:28:04 2023 +0200
+
+    Added To do editing
+
+commit 4cd0ede0527d08d98704cf039d383cc2bbe4da0e
+Author: JanSchaefli <jan.schaefli@edu.tbz.ch>
+Date:   Thu Apr 13 13:46:30 2023 +0200
+
+    to-do.html finished and basic design
+
+commit ea6c1c822592e69144c7dffbd0b9697d7bd86625
+Author: JanSchaefli <jan.schaefli@edu.tbz.ch>
+Date:   Thu Apr 13 10:48:23 2023 +0200
+
+    Completet all NoAuthentication methods
+
+commit 89dd529c53e555a1e57e933d357a7e0e160735e2
+Author: JanSchaefli <jan.schaefli@edu.tbz.ch>
+Date:   Thu Apr 13 09:03:02 2023 +0200
+
+    initial commit
