@@ -14,7 +14,7 @@ ToDoHub ist eine webbasierte Anwendung, die entwickelt wurde, um Benutzern bei d
 
 ## Verwendung
 
-1. Melden Sie sich bei ToDoHub an. (E-Mail: , Passwort: m294)
+1. Melden Sie sich bei ToDoHub an. (E-Mail: beliebige@email.com , Passwort: m294)
 2. Geben Sie Ihre Aufgabe in das Eingabefeld mit der Bezeichnung "Task" ein.
 3. Klicken Sie auf "Add Task", um sie zur To-Do-Liste hinzuzufügen.
 4. Wenn Sie eine Aufgabe erledigt haben, klicken Sie auf die Schaltfläche "Done" neben ihrem Namen, um sie in die "Done"-Liste zu verschieben.
