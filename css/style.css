@@ -124,9 +124,9 @@ footer {
     z-index: 9999;
     min-width: 200px;
     min-height: 100px;
-  }
-  
-  .alert-content {
+}
+
+.alert-content {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -136,17 +136,17 @@ footer {
     padding: 20px;
     min-width: 200px;
     min-height: 100px;
-  }
-  
-  .alert-text {
+}
+
+.alert-text {
     text-align: center;
     max-width: 90%;
     max-height: 80%;
     margin: auto;
     overflow: auto;
-  }
-  
-  .ok-button {
+}
+
+.ok-button {
     background-color: #333;
     border: none;
     color: #fff;
@@ -156,6 +156,8 @@ footer {
     align-self: center;
     margin-top: 20px;
     margin-bottom: 10px;
-  }
-  
-  
+}
+
+.ok-button:hover {
+    background-color: #666;
+}

@@ -1,0 +1,53 @@
+/*#1e1e1e*/
+* {
+    color: white;
+}
+
+header {
+    border-bottom: 1px solid #121212;
+    background-color: #1e1e1e;
+}
+
+.company-name {
+    color: #fefefe;
+}
+
+nav ul li a {
+    color: #fefefe;
+}
+
+nav ul li a:hover {
+    color: #afafaf;
+}
+
+footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 0;
+    border-top: 1px solid #121212;
+    width: 100%;
+    background-color: #1e1e1e;
+}
+
+.copyright p {
+    color: #fefefe;
+}
+
+.alert-container {
+    background-color: rgba(255, 255, 255, 0.5);
+}
+
+.alert-content {
+    background-color: #1e1e1e;
+    box-shadow: 0px 2px 10px rgba(255, 255, 255, 0.5);
+}
+
+.ok-button {
+    background-color: #fefefe;
+    color: #1e1e1e;
+}
+
+.ok-button:hover {
+    color: #afafaf;
+}
